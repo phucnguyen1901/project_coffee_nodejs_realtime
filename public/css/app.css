@@ -1,0 +1,74 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothie: antialiased;
+  color: black;
+}
+
+nav li:first-child {
+  width: 40px;
+  height: 40px;
+  background: pink;
+}
+
+nav li:first-child:hover {
+  background: lightblue;
+}
+
+nav li a:hover {
+  color: red;
+}
+
+#text_order {
+  background: pink;
+}
+
+section.hero {
+  background: #c6c6e4;
+}
+
+.add-to-cart {
+  background: pink;
+}
+
+.add-to-cart:hover {
+  background: lightblue;
+}
+
+.add-to-cart:focus {
+  outline: none;
+  border: 3px solid pink;
+}
+
+.price-to-cart {
+  color: #2ada2a;
+}
+
+.back,
+.submit {
+  border: 3px solid pink;
+  background: pink;
+}
+
+.back:hover,
+.submit:hover {
+  background: lightblue;
+}
+
+.btn-login {
+  background: pink;
+}
+
+.btn-login:hover {
+  background: lightblue;
+}
+
+input[type=text]:focus {
+  outline: none;
+  border: 2px solid pink;
+}
+
+input[type=password]:focus {
+  outline: none;
+  border: 2px solid pink;
+}
+

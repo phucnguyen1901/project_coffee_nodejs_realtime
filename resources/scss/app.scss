@@ -1,0 +1,72 @@
+
+@import './variables';
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothie : antialiased;
+    color: $dark;
+    // background: $secondary;
+}
+
+nav li:first-child {
+    &:hover{
+        background: $light;
+    }
+    width: 40px;
+    height: 40px;
+    background: $pure;
+}
+
+nav li a {
+    // transition: all .2s ease-in-out;
+    &:hover {
+        color: $primary;
+    }
+}
+
+#text_order{
+    background: $pure;
+}
+
+section.hero{
+    background: $secondary;
+}
+
+.add-to-cart{
+    background: $pure;
+    &:hover{
+        background: $light;
+    }
+    &:focus{
+        outline: none;
+        border: 3px solid $pure;
+    }
+}
+
+.price-to-cart{
+    color: $price;
+}
+
+.back,.submit {
+    border: 3px solid $pure;
+    &:hover{
+        background: $light
+    }
+    background : $pure;
+}
+
+.btn-login{
+    background: $pure;
+    &:hover{
+        background: $light
+    }
+}
+
+input[type="text"]:focus{
+    outline: none;
+    border: 2px solid $pure; 
+}
+
+input[type="password"]:focus{
+    outline: none;
+    border: 2px solid $pure; 
+}
