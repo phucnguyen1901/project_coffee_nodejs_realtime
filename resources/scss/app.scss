@@ -7,12 +7,21 @@ body{
     // background: $secondary;
 }
 
-nav li:first-child {
+// nav li:first-child {
+//     &:hover{
+//         background: $light;
+//     }
+//     width: 40px;
+//     height: 40px;
+//     background: $pure;
+// }
+
+#logo_cart {
     &:hover{
         background: $light;
     }
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     background: $pure;
 }
 

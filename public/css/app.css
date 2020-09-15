@@ -4,13 +4,13 @@ body {
   color: black;
 }
 
-nav li:first-child {
-  width: 40px;
-  height: 40px;
+#logo_cart {
+  width: 42px;
+  height: 42px;
   background: pink;
 }
 
-nav li:first-child:hover {
+#logo_cart:hover {
   background: lightblue;
 }
 
