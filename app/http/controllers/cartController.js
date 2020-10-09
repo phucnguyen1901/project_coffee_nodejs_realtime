@@ -15,8 +15,8 @@ function cartController(){
                 }
             } 
             let cart = req.session.cart
-            
-            if(!cart.items[req.body._id]){
+            // if(!cart.items[req.body._id]){
+            if(!(req.body._id in cart.items)){
                 cart.items[req.body._id] = {
                     item : req.body,
                     qty: 1
@@ -29,7 +29,7 @@ function cartController(){
                 cart.totalPrice += req.body.price
             }
 
-            return res.json({ totalQty: cart.totalQty})
+            return res.json({ totalQty: cart.totalQty , totalPrice: cart.totalPrice})
         }
     }
 }

@@ -1,5 +1,9 @@
 
 @import './variables';
+@import '~noty/src/noty.scss';
+@import '~noty/src/themes/mint.scss';
+
+
 body{
     font-family: Arial, Helvetica, sans-serif;
     -webkit-font-smoothie : antialiased;
@@ -20,8 +24,8 @@ body{
     &:hover{
         background: $light;
     }
-    width: 42px;
-    height: 42px;
+    // width: 42px;
+    // height: 42px;
     background: $pure;
 }
 
@@ -78,4 +82,9 @@ input[type="text"]:focus{
 input[type="password"]:focus{
     outline: none;
     border: 2px solid $pure; 
+}
+
+.noty_theme__mint{
+    border-radius: 50px!important;
+    padding-left: 8px!important;
 }

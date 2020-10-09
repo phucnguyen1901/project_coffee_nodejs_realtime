@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon --inspect server.js",
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "npm run development -- --watch",
@@ -15,6 +15,7 @@
   "description": "",
   "dependencies": {
     "axios": "^0.20.0",
+    "bcrypt": "^5.0.0",
     "connect-mongo": "^3.2.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
@@ -22,7 +23,10 @@
     "express-ejs-layouts": "^2.5.0",
     "express-flash": "0.0.2",
     "express-session": "^1.17.1",
-    "mongoose": "^5.10.5"
+    "mongoose": "^5.10.5",
+    "noty": "^3.2.0-beta",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",

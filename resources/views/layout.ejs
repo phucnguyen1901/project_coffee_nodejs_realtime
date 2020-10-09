@@ -1,35 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="/image/favicon.ico"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/image/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coffee</title>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/app.css">
-</head>
-<body>
-    <nav class="container mx-auto flex items-center justify-between py-4 border-b border-gray-600">
-        <div>
-            <a href="/"><img id="logo" src="/image/logo.png" alt="logo"></a>
-        </div>
-        <div>
-            <ul class="flex items-center">
-                <li>
-                    <a id="logo_cart" href="/cart" class="py-1 px-2 flex items-center rounded-lg">
-                        <span id="cartCount" class="text-red-700"></span>
-                        <img src="/image/icon_cart.png" alt="cart">
-                    </a>
-                </li>
-                <li class="ml-6"><a href="#">Menu</a></li>
-                <li class="ml-6"><a href="#">Contact</a></li>
-                <li class="ml-6"><a href="/login">Login</a></li>
-            </ul>
-        </div>
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/app.css" />
+  </head>
+  <body>
+    <nav
+      class="container mx-auto flex items-center justify-between py-4 border-b border-gray-600"
+    >
+      <div>
+        <a href="/"><img id="logo" src="/image/logo.png" alt="logo"/></a>
+      </div>
+      <div>
+        <ul class="flex items-center">
+          <li>
+            <!-- <a id="logo_cart" href="/cart" class="py-1 px-2 flex items-center rounded-lg"> -->
+            <a
+              id="logo_cart"
+              href="/cart"
+              class="h-10 py-1 px-2 flex items-center rounded-lg"
+            >
+              <span id="cartCount" class="text-red-700"
+                ><%= session.cart ? session.cart.totalQty: '' %></span
+              >
+              <img
+                style="width:38px; height:38px;"
+                src="/image/icon_cart.png"
+                alt="cart"
+              />
+            </a>
+          </li>
+          <li class="ml-6"><a href="#">Menu</a></li>
+          <li class="ml-6"><a href="#">Contact</a></li>
+          <% if(user) {%>
+          <form id="logout" action="/logout" method="POST">
+            <li class="ml-6">
+              <a onclick="document.getElementById('logout').submit()" href="#"
+                >Logout</a
+              >
+            </li>
+          </form>
+          <%}else{%>
+          <li class="ml-6"><a href="/login">Login</a></li>
+          <% }%>
+        </ul>
+      </div>
     </nav>
+
     <%- body %>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d31430.381163874186!2d105.7613802459321!3d10.033550568285216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1600588270312!5m2!1svi!2s"
+      width="600"
+      height="450"
+      frameborder="0"
+      style="border:0;"
+      allowfullscreen=""
+      aria-hidden="false"
+      tabindex="0"
+    ></iframe>
     <script src="/js/app.js"></script>
-</body>
+  </body>
 </html>
-
-

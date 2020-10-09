@@ -1,20 +1,24 @@
-const homeController = require("../app/http/controllers/homeController")
-const authController = require("../app/http/controllers/authController")
-const cartController = require("../app/http/controllers/cartController")
+const homeController = require("../app/http/controllers/homeController");
+const authController = require("../app/http/controllers/authController");
+const cartController = require("../app/http/controllers/cartController");
+const guest = require("../app/http/middleware/guest");
 
+function initRoute(app) {
+  app.get("/", homeController().index);
 
-function initRoute(app){
+  app.get("/login", guest, authController().login);
 
-    app.get('/',homeController().index)
+  app.post("/login", authController().postLogin);
 
-    app.get('/login', authController().login)
+  app.post("/logout", authController().logoutUser);
 
-    app.get('/register',authController().register)
+  app.get("/register", guest, authController().register);
 
-    app.get('/cart', cartController().cart)
+  app.post("/register", authController().postRegister);
 
-    app.post('/update-cart', cartController().updateCart)
+  app.get("/cart", cartController().cart);
 
+  app.post("/update-cart", cartController().updateCart);
 }
 
-module.exports = initRoute
+module.exports = initRoute;
