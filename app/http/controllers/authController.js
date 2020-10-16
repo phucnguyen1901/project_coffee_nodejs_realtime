@@ -15,25 +15,24 @@ function authController() {
         req.flash("error", "All fields are required");
         req.flash("username", username);
         return res.redirect("/login");
-      } else {
-        passport.authenticate("local", (err, user, info) => {
+      }
+      passport.authenticate("local", (err, user, info) => {
+        if (err) {
+          req.flash("error", info.message);
+          return next(err);
+        }
+        if (!user) {
+          req.flash("error", info.message);
+          return res.redirect("/login");
+        }
+        req.logIn(user, (err) => {
           if (err) {
             req.flash("error", info.message);
-            return next(err);
-          }
-          if (!user) {
-            req.flash("error", info.message);
-            return res.redirect("/login");
-          }
-          req.logIn(user, (err) => {
-            if (err) {
-              req.flash("error", info.message);
-              return res.redirect("/");
-            }
             return res.redirect("/");
-          });
-        })(req, res, next);
-      }
+          }
+          return res.redirect("/");
+        });
+      })(req, res, next);
     },
     register(req, res) {
       res.render("auth/register");
