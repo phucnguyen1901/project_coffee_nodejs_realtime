@@ -1,4 +1,4 @@
-const User = require("../../model/user");
+const User = require("../../../model/user");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const { session } = require("passport");
@@ -30,7 +30,7 @@ function authController() {
             req.flash("error", info.message);
             return res.redirect("/");
           }
-          return res.redirect("/");
+          return res.redirect("/cart");
         });
       })(req, res, next);
     },

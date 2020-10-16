@@ -380,3 +380,17 @@ input[type=password]:focus {
   padding-left: 8px !important;
 }
 
+.format-cart {
+  width: 300px;
+}
+
+.format-cart:focus {
+  outline: none;
+  border: 2px solid pink;
+}
+
+.history-orders {
+  background: black;
+  color: pink;
+}
+

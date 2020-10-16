@@ -1,14 +1,12 @@
+@import "./variables";
+@import "~noty/src/noty.scss";
+@import "~noty/src/themes/mint.scss";
 
-@import './variables';
-@import '~noty/src/noty.scss';
-@import '~noty/src/themes/mint.scss';
-
-
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    -webkit-font-smoothie : antialiased;
-    color: $dark;
-    // background: $secondary;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothie: antialiased;
+  color: $dark;
+  // background: $secondary;
 }
 
 // nav li:first-child {
@@ -21,70 +19,84 @@ body{
 // }
 
 #logo_cart {
-    &:hover{
-        background: $light;
-    }
-    // width: 42px;
-    // height: 42px;
-    background: $pure;
+  &:hover {
+    background: $light;
+  }
+  // width: 42px;
+  // height: 42px;
+  background: $pure;
 }
 
 nav li a {
-    // transition: all .2s ease-in-out;
-    &:hover {
-        color: $primary;
-    }
+  // transition: all .2s ease-in-out;
+  &:hover {
+    color: $primary;
+  }
 }
 
-#text_order{
-    background: $pure;
+#text_order {
+  background: $pure;
 }
 
-section.hero{
-    background: $secondary;
+section.hero {
+  background: $secondary;
 }
 
-.add-to-cart{
-    background: $pure;
-    &:hover{
-        background: $light;
-    }
-    &:focus{
-        outline: none;
-        border: 3px solid $pure;
-    }
-}
-
-.price-to-cart{
-    color: $price;
-}
-
-.back,.submit {
+.add-to-cart {
+  background: $pure;
+  &:hover {
+    background: $light;
+  }
+  &:focus {
+    outline: none;
     border: 3px solid $pure;
-    &:hover{
-        background: $light
-    }
-    background : $pure;
+  }
 }
 
-.btn-login{
-    background: $pure;
-    &:hover{
-        background: $light
-    }
+.price-to-cart {
+  color: $price;
 }
 
-input[type="text"]:focus{
+.back,
+.submit {
+  border: 3px solid $pure;
+  &:hover {
+    background: $light;
+  }
+  background: $pure;
+}
+
+.btn-login {
+  background: $pure;
+  &:hover {
+    background: $light;
+  }
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: 2px solid $pure;
+}
+
+input[type="password"]:focus {
+  outline: none;
+  border: 2px solid $pure;
+}
+
+.noty_theme__mint {
+  border-radius: 50px !important;
+  padding-left: 8px !important;
+}
+
+.format-cart {
+  width: 300px;
+  &:focus {
     outline: none;
-    border: 2px solid $pure; 
+    border: 2px solid $pure;
+  }
 }
 
-input[type="password"]:focus{
-    outline: none;
-    border: 2px solid $pure; 
-}
-
-.noty_theme__mint{
-    border-radius: 50px!important;
-    padding-left: 8px!important;
+.history-orders {
+  background: $dark;
+  color: $pure;
 }

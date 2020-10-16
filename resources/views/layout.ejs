@@ -40,6 +40,7 @@
           <li class="ml-6"><a href="#">Menu</a></li>
           <li class="ml-6"><a href="#">Contact</a></li>
           <% if(user) {%>
+          <li class="ml-6"><a href="/customer/orders">History</a></li>
           <form id="logout" action="/logout" method="POST">
             <li class="ml-6">
               <a onclick="document.getElementById('logout').submit()" href="#"
