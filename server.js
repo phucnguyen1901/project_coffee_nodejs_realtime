@@ -74,4 +74,4 @@ app.use(express.json());
 // require('./routes/web')(app)
 initRoute(app);
 
-app.listen(port, () => console.log("Server was stated with port " + port));
+app.listen(port, () => console.log("Server started with port " + port));

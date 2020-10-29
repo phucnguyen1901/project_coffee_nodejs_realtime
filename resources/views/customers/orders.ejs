@@ -1,7 +1,9 @@
 <section class="">
- <% if(messages.success) { %>
+  <% if(messages.success) { %>
   <div
-    class="mt-10 container mx-auto text-center text-white bg-green-400 h-10 w-2/3 leading-10 rounded-full">
+    id="success-message"
+    class="mt-10 container mx-auto text-center text-white bg-green-400 h-10 w-2/3 leading-10 rounded-full"
+  >
     <%= messages.success%>
   </div>
 
@@ -11,6 +13,7 @@
     <table class="table-auto history-orders">
       <tr>
         <td class="border px-4 py-2">Orders</td>
+        <td class="border px-4 py-2">Note</td>
         <td class="border px-4 py-2">Address</td>
         <td class="border px-4 py-2">Phone</td>
         <td class="border px-4 py-2">Status</td>
@@ -18,7 +21,10 @@
       </tr>
       <% if(orders){ orders.forEach( (order) => { %>
       <tr>
-        <td class="border px-4 py-2"><%= order._id%></td>
+        <td class="border px-4 py-2 text-blue-500 hover:text-pink-500">
+          <a href=""><%= order._id%></a>
+        </td>
+        <td class="border px-4 py-2"><%= order.note%></td>
         <td class="border px-4 py-2"><%= order.address%></td>
         <td class="border px-4 py-2"><%= '0'+order.phone%></td>
         <td class="border px-4 py-2"><%= order.status%></td>

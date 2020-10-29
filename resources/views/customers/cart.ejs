@@ -6,41 +6,46 @@
     <div>
       <h1 class="font-bold text-xl border-b border-gray-600">All items</h1>
     </div>
+    <% if(session.cart){ for(const element in session.cart.items){ 
+      const coffee= session.cart.items[element].item 
+      const qty =session.cart.items[element].qty%>
     <div class="flex items-center justify-between border-b border-gray-600">
-      <img class="w-40 h-40" src="/image/phusi.png" alt="phusi_coffee" />
-      <div>
-        <h1>PhuSi Coffee</h1>
-        <span>Size: M</span>
-      </div>
-      <span>Count</span>
-      <span>price</span>
+        <img
+          class="w-40 h-40"
+          src="/image/<%= coffee.img %>"
+          alt="phusi_coffee"
+        />
+        <div class="text-right mt-3 text-xl font-bold">
+          <div>
+            <h1><%= coffee.name%></h1>
+            <span>Price: </span>
+            <span class="text-green-500"><%= coffee.price%></span>
+          </div>
+          <div>
+            <span>Size:</span>
+             <span class="text-green-500"><%= coffee.size%></span>
+          </div>
+            <span>Qty:</span>
+            <span class="text-green-500"> <%= qty%></span>
+        </div>
+        <div class="text-xl">
+          <span>Amount:</span>
+          <span class="text-green-700"> <%= qty*coffee.price%> $</span>
+        </div>
     </div>
-    <div class="flex items-center justify-between border-b border-gray-600">
-      <img class="w-40 h-40" src="/image/phusi.png" alt="phusi_coffee" />
-      <div>
-        <h1>PhuSi Coffee</h1>
-        <span>Size: M</span>
+      <%}}else{%>
+      <div class="flex items-center justify-between border-b border-gray-600">
+        <a href="/#products" class="hover:text-pink-700 font-bold">Chưa có gì trong giỏ hàng hihi! Click để chọn ngay!</a>
       </div>
-      <span>Count</span>
-      <span>price</span>
-    </div>
-    <div class="flex items-center justify-between border-b border-gray-600">
-      <img class="w-40 h-40" src="/image/phusi.png" alt="phusi_coffee" />
-      <div>
-        <h1>PhuSi Coffee</h1>
-        <span>Size: M</span>
-      </div>
-      <span>Count</span>
-      <span>price</span>
-    </div>
-    <!-- <hr> -->
-    <div class="text-right mt-3">
-      <div>
-        <span>Total Amount: </span>
-        <span class="text-green-700">9 $</span>
-      </div>
-      <div class="mt-3">
-        <% if(user){%>
+      <%}%>
+
+      <div class="mt-3 text-right">
+        <% if(user){ 
+          if(session.cart){%>
+          <div class="text-3xl">
+          <span>Total amount : </span>
+          <span class="mb-2 text-green-700"><%=session.cart.totalPrice%> $</span>
+        </div>
         <form action="/orders" method="POST">
           <div class="mb-3">
             <label for="" class="mr-3">Number Phone:</label>
@@ -76,7 +81,8 @@
           </button>
         </form>
       </div>
-      <%}else{%>
+
+      <%}}else{%>
       <a href="/login" class="submit font-bold text-xl mt-3 px-2 rounded-full"
         >Login to order</a
       >

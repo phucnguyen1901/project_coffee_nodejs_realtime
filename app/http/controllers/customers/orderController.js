@@ -16,6 +16,7 @@ function orderController() {
       });
       order.save().then((ok) => {
         req.flash("success", "Order placed successfully");
+        delete req.session.cart;
         res.redirect("/customer/orders");
       });
     },

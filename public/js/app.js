@@ -5266,18 +5266,18 @@ __webpack_require__.r(__webpack_exports__);
  // const axios = require('axios');
 // const cartController = require('../../app/http/controllers/cartController');
 
-var addToCart = document.querySelectorAll('.add-to-cart');
-var cartCount = document.querySelector('#cartCount');
+var addToCart = document.querySelectorAll(".add-to-cart");
+var cartCount = document.querySelector("#cartCount");
 
 function updateCart(coffee) {
   // console.log(coffee)
-  axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/update-cart', coffee).then(function (res) {
-    console.log(res);
+  axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/update-cart", coffee).then(function (res) {
+    //   console.log(res);
     cartCount.innerHTML = res.data.totalQty;
     new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
       // theme: "relax",
       timeout: 1000,
-      type: 'success',
+      type: "success",
       text: "Đã thêm vào giỏ hàng!",
       progressBar: false
     }).show();
@@ -5287,11 +5287,20 @@ function updateCart(coffee) {
 }
 
 addToCart.forEach(function (btn) {
-  btn.addEventListener('click', function () {
+  btn.addEventListener("click", function () {
     var coffee = JSON.parse(btn.dataset.menu);
+    console.log(coffee);
     updateCart(coffee);
   });
-});
+}); // Remove alert after x seconds
+
+var alertMessage = document.querySelector("#success-message");
+
+if (alertMessage) {
+  setTimeout(function () {
+    alertMessage.remove();
+  }, 3000);
+}
 
 /***/ }),
 
