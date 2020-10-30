@@ -1,5 +1,7 @@
 import axios from "axios";
 import Noty from "noty";
+// import { initAdmin } from "./admin";
+const initAdmin = require("./admin");
 // const axios = require('axios');
 // const cartController = require('../../app/http/controllers/cartController');
 
@@ -39,3 +41,22 @@ if (alertMessage) {
     alertMessage.remove();
   }, 3000);
 }
+
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+  const menu = document.getElementById("menu");
+  console.log(scrollY);
+  if (scrollY >= 120) {
+    console.log("=0");
+    menu.style.position = "fixed";
+    menu.style.top = "0px";
+    menu.style.width = "100%";
+    menu.style.backgroundColor = "white";
+  }
+  if (scrollY == 0) {
+    menu.style.position = "relative";
+  }
+});
+
+// console.log(initAdmin);
+initAdmin();

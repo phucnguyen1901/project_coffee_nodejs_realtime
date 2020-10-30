@@ -15,9 +15,9 @@
           src="/image/<%= coffee.img %>"
           alt="phusi_coffee"
         />
-        <div class="text-right mt-3 text-xl font-bold">
+        <div class="text-right text-pink-500 mt-3 text-xl font-bold">
           <div>
-            <h1><%= coffee.name%></h1>
+            <h1 class=""><%= coffee.name%></h1>
             <span>Price: </span>
             <span class="text-green-500"><%= coffee.price%></span>
           </div>
@@ -28,45 +28,48 @@
             <span>Qty:</span>
             <span class="text-green-500"> <%= qty%></span>
         </div>
-        <div class="text-xl">
+        <div class="text-xl text-pink-500">
           <span>Amount:</span>
-          <span class="text-green-700"> <%= qty*coffee.price%> $</span>
+          <span class="text-green-500"> <%= qty*coffee.price%> $</span>
         </div>
     </div>
       <%}}else{%>
       <div class="flex items-center justify-between border-b border-gray-600">
-        <a href="/#products" class="hover:text-pink-700 font-bold">Chưa có gì trong giỏ hàng hihi! Click để chọn ngay!</a>
+        <a href="/#products" class="hover:text-pink-700 font-bold text-3xl">Empty cart! Click to buy now!</a>
       </div>
+      
       <%}%>
 
-      <div class="mt-3 text-right">
+      <div class="mt-3 text-right mt-4">
+      <a href="/#products" class="mt-10 hover:bg-blue-300 font-bold font-italic text-3xl bg-pink-200 px-4 py-2 text-red-500 rounded-md" >Buy More !</a>
         <% if(user){ 
           if(session.cart){%>
-          <div class="text-3xl">
+        <div class="text-3xl mt-2 font-bold text-pink-500">
           <span>Total amount : </span>
-          <span class="mb-2 text-green-700"><%=session.cart.totalPrice%> $</span>
+          <span class="mb-2 text-green-500"><%=session.cart.totalPrice%> $</span>
         </div>
         <form action="/orders" method="POST">
           <div class="mb-3">
-            <label for="" class="mr-3">Number Phone:</label>
+            <label for="" class="mr-3 text-xl text-pink-500 font-bold">Number Phone:</label>
             <input
+            autocomplete="off"
               name="phone"
               type="text"
-              class="inline-block border border-gray-400 focus:outline-none format-cart mb-3"
+              class="format-cart py-2 px-2"
             />
           </div>
-          <label for="" class="mr-3">Address:</label>
+          <label for="" class="mr-3 text-xl text-pink-500 font-bold">Address:</label>
           <textarea
-            class="inline-block border border-gray-400 focus:outline-none format-cart"
+            class="format-cart py-2 px-2"
             name="address"
             cols="20"
             rows="5"
             placeholder="Please write note!"
           ></textarea>
           <br />
-          <label for="" class="mr-3">Note:</label>
+          <label for="" class="mr-3 text-xl text-pink-500 font-bold">Note:</label>
           <textarea
-            class="inline-block border border-gray-400 focus:outline-none format-cart"
+            class="format-cart py-2 px-2"
             name="note"
             cols="20"
             rows="5"
@@ -75,7 +78,7 @@
           <br />
           <button
             type="submit"
-            class="submit font-bold text-xl mt-3 px-2 rounded-full"
+            class="submit hover:bg-blue-300 font-bold font-italic text-3xl bg-pink-200 px-4 py-2 text-red-500 rounded-md"
           >
             Order now
           </button>
@@ -83,7 +86,7 @@
       </div>
 
       <%}}else{%>
-      <a href="/login" class="submit font-bold text-xl mt-3 px-2 rounded-full"
+      <a href="/login" class="submit hover:bg-blue-300 font-bold font-italic text-3xl bg-pink-200 px-4 py-2 text-red-500 rounded-md"
         >Login to order</a
       >
       <%}%>

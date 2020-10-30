@@ -346,17 +346,6 @@ section.hero {
   color: #2ada2a;
 }
 
-.back,
-.submit {
-  border: 3px solid pink;
-  background: pink;
-}
-
-.back:hover,
-.submit:hover {
-  background: lightblue;
-}
-
 .btn-login {
   background: pink;
 }
@@ -382,15 +371,18 @@ input[type=password]:focus {
 
 .format-cart {
   width: 300px;
+  background-color: white;
+  border-radius: 0.25rem;
+  border: 2px solid lightblue;
 }
 
 .format-cart:focus {
   outline: none;
+  background-color: white;
   border: 2px solid pink;
 }
 
 .history-orders {
-  background: black;
-  color: pink;
+  color: black;
 }
 

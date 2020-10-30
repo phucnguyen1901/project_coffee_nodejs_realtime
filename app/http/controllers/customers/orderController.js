@@ -1,4 +1,5 @@
 const Order = require("../../../model/order");
+const moment = require("moment");
 function orderController() {
   return {
     store(req, res) {
@@ -21,8 +22,16 @@ function orderController() {
       });
     },
     async historyOrder(req, res) {
-      const orders = await Order.find({ customerId: req.user._id });
-      res.render("customers/orders", { orders: orders.reverse() });
+      const orders = await Order.find({ customerId: req.user._id }, null, {
+        sort: { createdAt: -1 },
+      });
+      // or orders.reverse()
+      // Not Display Message when back 
+      res.header(
+        "Cache-Control",
+        "no-cache,private,no-store,must-revalidate,max-stale=0,post-check=0,pre-check=0"
+      );
+      res.render("customers/orders", { orders: orders, moment: moment });
     },
   };
 }

@@ -4,6 +4,9 @@ const passport = require("passport");
 const { session } = require("passport");
 
 function authController() {
+  const _getRedirectUrl = (req) => {
+    return req.user.role === "admin" ? "/admin/orders" : "/cart";
+  };
   return {
     login(req, res) {
       res.render("auth/login");
@@ -30,7 +33,7 @@ function authController() {
             req.flash("error", info.message);
             return res.redirect("/");
           }
-          return res.redirect("/cart");
+          return res.redirect(_getRedirectUrl(req));
         });
       })(req, res, next);
     },
@@ -66,7 +69,7 @@ function authController() {
       });
       user
         .save()
-        .then((user) => res.redirect("/cart"))
+        .then((user) => res.redirect("/login"))
         .catch((req) => {
           req.flash("error", "Something went wrong");
           return res.redirect("/register");
