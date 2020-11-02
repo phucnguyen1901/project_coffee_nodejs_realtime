@@ -1,0 +1,30 @@
+<section>
+  <div class="container mx-auto mt-3 status">
+    <div class="w-2/3 mx-auto status-box">
+      <div class="flex items-center justify-between pb-5">
+        <h1 class="text-3xl ">Status Order</h1>
+        <h6 class="text-red-600"><%= order._id%></h6>
+        <input id="Order" type="hidden" value="<%= JSON.stringify(order) %>" />
+      </div>
+      <div>
+        <ul>
+          <li class="status-line" data-status="order_placed">
+            <span>Order_placed</span>
+          </li>
+          <li class="status-line" data-status="confirmed">
+            <span>Confirmed</span>
+          </li>
+          <li class="status-line" data-status="preparation">
+            <span>Preparation</span>
+          </li>
+          <li class="status-line" data-status="delivered">
+            <span>Delivered</span>
+          </li>
+          <li class="status-line" data-status="completed">
+            <span>Completed</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

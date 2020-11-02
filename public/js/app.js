@@ -26875,9 +26875,10 @@ function initAdmin() {
       "X-Requested-With": "XMLHttpRequest"
     }
   }).then(function (res) {
-    orders = res.data;
+    orders = res.data; // if (typeof order === "object") {
+
     markup = generateMarkup(orders);
-    orderTableBody.innerHTML = markup;
+    orderTableBody.innerHTML = markup; // }
   })["catch"](function (err) {
     console.log(err);
   });
@@ -26891,7 +26892,7 @@ function initAdmin() {
 
   function generateMarkup(orders) {
     return orders.map(function (order) {
-      return "      <tr>\n        <td class=\"border px-4 py-2 text-blue-500 hover:text-pink-500\">\n          <a href=\"\"> ".concat(order._id, "</a>\n        </td>\n        <td class=\"border px-4 py-2\"> ").concat(renderItems(order.items), "</td>\n        <td class=\"border px-4 py-2\"> ").concat(order.address, "</td>\n        <td class=\"border px-4 py-2\">0").concat(order.phone, "</td>\n        <td class=\"border px-4 py-2\"> ").concat(order.note, "</td>\n        <td class=\"border px-4 py-2\">\n        <form action=\"/admin/order/status\" method=\"POST\">\n          <input type=\"hidden\" name=\"orderId\" value=\"").concat(order._id, "\" />\n          <select name=\"status\" onchange=\"this.form.submit()\">\n            <option value=\"order_placed\"\n              ").concat(order.status === "order_placed" ? "selected" : "", ">Order_Placed</option>\n            </option>\n            <option value=\"confirmed\"\n              ").concat(order.status === "confirmed" ? "selected" : "", ">Confirmed</option>\n            </option>\n            <option value=\"delivered\"\n              ").concat(order.status === "delivered" ? "selected" : "", ">Delivered</option>\n            </option>\n            <option value=\"completed\"\n              ").concat(order.status === "completed" ? "selected" : "", ">Completed</option>\n            </option>\n          </select>\n        </form>\n        </td>\n        <td class=\"border px-4 py-2\"> ").concat(moment(order.createdAt).format("LLLL"), "</td>\n      </tr>");
+      return "      <tr>\n        <td class=\"border px-4 py-2 text-blue-500 hover:text-pink-500\">\n          <a href=\"\"> ".concat(order._id, "</a>\n        </td>\n        <td class=\"border px-4 py-2\"> ").concat(renderItems(order.items), "</td>\n        <td class=\"border px-4 py-2\"> ").concat(order.address, "</td>\n        <td class=\"border px-4 py-2\">0").concat(order.phone, "</td>\n        <td class=\"border px-4 py-2\"> ").concat(order.note, "</td>\n        <td class=\"border px-4 py-2\">\n        <form action=\"/admin/orders/status\" method=\"POST\">\n          <input type=\"hidden\" name=\"orderId\" value=\"").concat(order._id, "\" />\n          <select name=\"status\" onchange=\"this.form.submit()\">\n            <option value=\"order_placed\"\n              ").concat(order.status === "order_placed" ? "selected" : "", ">Order_Placed</option>\n            </option>\n            <option value=\"confirmed\"\n              ").concat(order.status === "confirmed" ? "selected" : "", ">Confirmed</option>\n            </option>\n            <option value=\"delivered\"\n              ").concat(order.status === "delivered" ? "selected" : "", ">Delivered</option>\n            </option>\n            <option value=\"completed\"\n              ").concat(order.status === "completed" ? "selected" : "", ">Completed</option>\n            </option>\n          </select>\n        </form>\n        </td>\n        <td class=\"border px-4 py-2\"> ").concat(moment(order.createdAt).format("LLLL"), "</td>\n      </tr>");
     }).join("");
   }
 }
@@ -26913,8 +26914,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 
  // import { initAdmin } from "./admin";
+
+
 
 var initAdmin = __webpack_require__(/*! ./admin */ "./resources/js/admin.js"); // const axios = require('axios');
 // const cartController = require('../../app/http/controllers/cartController');
@@ -26959,10 +26964,11 @@ if (alertMessage) {
 window.addEventListener("scroll", function () {
   var scrollY = window.scrollY;
   var menu = document.getElementById("menu");
-  console.log(scrollY);
 
-  if (scrollY >= 120) {
-    console.log("=0");
+  if (scrollY >= 160) {
+    // menu.style.height = "70px";
+    // menu.style.border = "hidden";
+    // menu.style.lineHeight = "35";
     menu.style.position = "fixed";
     menu.style.top = "0px";
     menu.style.width = "100%";
@@ -26975,6 +26981,25 @@ window.addEventListener("scroll", function () {
 }); // console.log(initAdmin);
 
 initAdmin();
+var order = document.querySelector("#Order") ? document.querySelector("#Order").value : null;
+order = JSON.parse(order);
+var Statuses = document.querySelectorAll(".status-line");
+var time = document.createElement("small");
+var condition = true;
+Statuses.forEach(function (st) {
+  var data = st.dataset.status;
+
+  if (condition === true) {
+    if (data === order.status) {
+      st.classList.add("current");
+      time.innerHTML = moment__WEBPACK_IMPORTED_MODULE_2___default()(order.updatedAt).format("LLLL");
+      st.appendChild(time);
+      condition = false;
+    } else {
+      st.classList.add("step-completed");
+    }
+  }
+});
 
 /***/ }),
 

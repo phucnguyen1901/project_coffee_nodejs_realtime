@@ -11,7 +11,6 @@ function adminController() {
           if (req.xhr) {
             return res.json(orders);
           }
-
           return res.render("admin/index");
         });
     },

@@ -26,12 +26,20 @@ function orderController() {
         sort: { createdAt: -1 },
       });
       // or orders.reverse()
-      // Not Display Message when back 
+      // Not Display Message when back
       res.header(
         "Cache-Control",
         "no-cache,private,no-store,must-revalidate,max-stale=0,post-check=0,pre-check=0"
       );
       res.render("customers/orders", { orders: orders, moment: moment });
+    },
+
+    async show(req, res) {
+      const order = await Order.findById(req.params.id);
+      if (req.user._id.toString() === order.customerId.toString()) {
+        return res.render("customers/singleOrder", { order: order });
+      }
+      return res.render("customers/singleOrder", { order: 1 });
     },
   };
 }

@@ -1,7 +1,9 @@
 import axios from "axios";
 import Noty from "noty";
 // import { initAdmin } from "./admin";
+import moment from "moment";
 const initAdmin = require("./admin");
+
 // const axios = require('axios');
 // const cartController = require('../../app/http/controllers/cartController');
 
@@ -45,9 +47,10 @@ if (alertMessage) {
 window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
   const menu = document.getElementById("menu");
-  console.log(scrollY);
-  if (scrollY >= 120) {
-    console.log("=0");
+  if (scrollY >= 160) {
+    // menu.style.height = "70px";
+    // menu.style.border = "hidden";
+    // menu.style.lineHeight = "35";
     menu.style.position = "fixed";
     menu.style.top = "0px";
     menu.style.width = "100%";
@@ -60,3 +63,26 @@ window.addEventListener("scroll", () => {
 
 // console.log(initAdmin);
 initAdmin();
+
+let order = document.querySelector("#Order")
+  ? document.querySelector("#Order").value
+  : null;
+order = JSON.parse(order);
+
+let Statuses = document.querySelectorAll(".status-line");
+let time = document.createElement("small");
+
+let condition = true;
+Statuses.forEach((st) => {
+  let data = st.dataset.status;
+  if (condition === true) {
+    if (data === order.status) {
+      st.classList.add("current");
+      time.innerHTML = moment(order.updatedAt).format("LLLL");
+      st.appendChild(time);
+      condition = false;
+    } else {
+      st.classList.add("step-completed");
+    }
+  }
+});

@@ -104,3 +104,96 @@ input[type="password"]:focus {
   // background: $dark;
   color: $dark;
 }
+
+section .status {
+  // background-color: $secondary;
+  min-height: 500px;
+  padding-bottom: 50px;
+  // height: 500px;
+}
+
+.status-box ul li span {
+  position: relative;
+}
+
+.status-box ul li span::after {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 0;
+  background: $dark;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translateY(5px);
+}
+
+.status-box ul li span::before {
+  content: "\f46c";
+  font-family: "Line Awesome Free";
+  font-size: 46px;
+  // font-weight: 600;
+  // background-color: blue;
+  // position: absolute;
+}
+
+.status-line {
+  padding-bottom: 50px;
+}
+
+.status-line span {
+  font-size: 25px;
+}
+
+//Line
+
+.status-box ul li {
+  position: relative;
+}
+
+.status-box ul li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -11px;
+  width: 2px;
+  height: 80%;
+  background: $dark;
+  margin-top: 55px;
+}
+
+//last dot
+.status-box ul li:nth-child(5)::before {
+  display: none;
+}
+
+//step
+.status-box ul li.step-completed {
+  color: $gray;
+}
+
+.status-box ul li.step-completed::before {
+  background-color: $gray;
+}
+
+.status-box ul li.step-completed span::after {
+  background-color: $gray;
+}
+
+//current
+.status-box ul li.current {
+  color: $primary;
+}
+
+.status-box ul li.current:before {
+  background-color: $primary;
+}
+
+.status-box ul li.current span::after {
+  background-color: $primary;
+}
+
+.status-line small {
+  float: right;
+  margin-top: 32px;
+}

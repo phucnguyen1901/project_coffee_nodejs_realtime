@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 .noty_layout_mixin,
 #noty_layout__centerRight,
 #noty_layout__centerLeft,
@@ -384,5 +386,88 @@ input[type=password]:focus {
 
 .history-orders {
   color: black;
+}
+
+section .status {
+  min-height: 500px;
+  padding-bottom: 50px;
+}
+
+.status-box ul li span {
+  position: relative;
+}
+
+.status-box ul li span::after {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 0;
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translateY(5px);
+}
+
+.status-box ul li span::before {
+  content: "\F46C";
+  font-family: "Line Awesome Free";
+  font-size: 46px;
+}
+
+.status-line {
+  padding-bottom: 50px;
+}
+
+.status-line span {
+  font-size: 25px;
+}
+
+.status-box ul li {
+  position: relative;
+}
+
+.status-box ul li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -11px;
+  width: 2px;
+  height: 80%;
+  background: black;
+  margin-top: 55px;
+}
+
+.status-box ul li:nth-child(5)::before {
+  display: none;
+}
+
+.status-box ul li.step-completed {
+  color: gray;
+}
+
+.status-box ul li.step-completed::before {
+  background-color: gray;
+}
+
+.status-box ul li.step-completed span::after {
+  background-color: gray;
+}
+
+.status-box ul li.current {
+  color: red;
+}
+
+.status-box ul li.current:before {
+  background-color: red;
+}
+
+.status-box ul li.current span::after {
+  background-color: red;
+}
+
+.status-line small {
+  float: right;
+  margin-top: 32px;
 }
 

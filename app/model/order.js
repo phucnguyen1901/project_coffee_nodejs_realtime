@@ -12,7 +12,7 @@ const order = new mongoose.Schema(
     address: { type: String, required: true },
     note: { type: String, required: true },
     paymentType: { type: String, default: "COD" },
-    status: { type: String, default: "Order_placed" },
+    status: { type: String, default: "order_placed" },
   },
   { timestamps: true }
 );

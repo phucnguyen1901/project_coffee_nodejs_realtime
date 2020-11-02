@@ -14,8 +14,10 @@ function initAdmin() {
     })
     .then((res) => {
       orders = res.data;
+      // if (typeof order === "object") {
       markup = generateMarkup(orders);
       orderTableBody.innerHTML = markup;
+      // }
     })
     .catch((err) => {
       console.log(err);
@@ -44,7 +46,7 @@ function initAdmin() {
         <td class="border px-4 py-2">0${order.phone}</td>
         <td class="border px-4 py-2"> ${order.note}</td>
         <td class="border px-4 py-2">
-        <form action="/admin/order/status" method="POST">
+        <form action="/admin/orders/status" method="POST">
           <input type="hidden" name="orderId" value="${order._id}" />
           <select name="status" onchange="this.form.submit()">
             <option value="order_placed"
