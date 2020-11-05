@@ -18,11 +18,8 @@
                 <div class="w-64 rounded-full">
                     <img class="h-64 w-64" src="/image/<%= element.img %>" alt="coffee_phusi">
                     <div class="text-center">
-                        <h2 class="font-bold">PhuSi Coffee</h2>
-                        <select name="choose-size" class="py-1 px-4 rounded-full uppercase text-xs">
-                            <option value="sizeM">size m</option>
-                            <option value="sizeL">size l</option>
-                        </select>
+                        <h2 class="font-bold"><%= element.name%> </h2>
+                        <h4>Size: <%=element.size%></h4>
                         <div>
                             <!-- <h2 class="price-to-cart font-size text-lg mt-3 text-3xl"><% if(element.size === "L"){ %>5$ <%}else{%>3$ <%}%> </h2> -->
                             <h2 class="price-to-cart font-size text-lg mt-3 text-3xl"> <%= element.price %>$ </h2>
