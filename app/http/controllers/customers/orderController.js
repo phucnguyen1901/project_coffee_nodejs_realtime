@@ -16,8 +16,12 @@ function orderController() {
         note: note,
       });
       order.save().then((ok) => {
-        req.flash("success", "Order placed successfully");
-        delete req.session.cart;
+        Order.populate(ok, { path: "customerId" }, (err, data) => {
+          req.flash("success", "Order placed successfully");
+          delete req.session.cart;
+          const eventEmitter = req.app.get("eventEmitter");
+          eventEmitter.emit("addOrder", data);
+        });
         res.redirect("/customer/orders");
       });
     },

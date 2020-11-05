@@ -2,6 +2,7 @@ import axios from "axios";
 import Noty from "noty";
 // import { initAdmin } from "./admin";
 import moment from "moment";
+import { updateOne } from "../../app/model/menu";
 const initAdmin = require("./admin");
 
 // const axios = require('axios');
@@ -47,42 +48,65 @@ if (alertMessage) {
 window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
   const menu = document.getElementById("menu");
+  const nav = document.getElementById("nav");
+
   if (scrollY >= 160) {
-    // menu.style.height = "70px";
-    // menu.style.border = "hidden";
-    // menu.style.lineHeight = "35";
     menu.style.position = "fixed";
+    nav.style.height = "70px";
     menu.style.top = "0px";
     menu.style.width = "100%";
     menu.style.backgroundColor = "white";
   }
   if (scrollY == 0) {
     menu.style.position = "relative";
+    nav.style.height = "95px";
   }
 });
-
-// console.log(initAdmin);
-initAdmin();
 
 let order = document.querySelector("#Order")
   ? document.querySelector("#Order").value
   : null;
 order = JSON.parse(order);
-
 let Statuses = document.querySelectorAll(".status-line");
 let time = document.createElement("small");
 
-let condition = true;
-Statuses.forEach((st) => {
-  let data = st.dataset.status;
-  if (condition === true) {
-    if (data === order.status) {
-      st.classList.add("current");
-      time.innerHTML = moment(order.updatedAt).format("LLLL");
-      st.appendChild(time);
-      condition = false;
-    } else {
-      st.classList.add("step-completed");
+function updateStatus(order) {
+  Statuses.forEach((status) => {
+    status.classList.remove("step-completed");
+    status.classList.remove("current");
+  });
+  let condition = true;
+  Statuses.forEach((st) => {
+    let data = st.dataset.status;
+    if (condition === true) {
+      if (data === order.status) {
+        st.classList.add("current");
+        time.innerHTML = moment(order.updatedAt).format("LLLL");
+        st.appendChild(time);
+        condition = false;
+      } else {
+        st.classList.add("step-completed");
+      }
     }
-  }
+  });
+}
+
+updateStatus(order);
+
+let socket = io();
+initAdmin(socket);
+if (order) {
+  socket.emit("join", `order_${order._id}`);
+}
+
+socket.on("orderUpdated", (data) => {
+  const updatedOrder = { ...order };
+  updatedOrder.updatedAt = moment(data.updatedAt).format("LLLL");
+  updatedOrder.status = data.status;
+  updateStatus(updatedOrder);
 });
+
+let adminPath = window.location.pathname;
+if (adminPath.includes("admin")) {
+  socket.emit("join", "adminRoom");
+}

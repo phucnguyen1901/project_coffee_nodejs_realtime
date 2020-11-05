@@ -7,13 +7,16 @@ const expressLayout = require("express-ejs-layouts");
 const path = require("path");
 const initRoute = require("./routes/web");
 const port = process.env.PORT || 3000;
-
 const mongoose = require("mongoose");
 const session = require("express-session");
-// const { MongoStore } = require("connect-mongo");
 const flash = require("express-flash");
 const MongoDbStore = require("connect-mongo")(session);
 const passport = require("passport");
+const Emitter = require("events");
+
+const eventEmitter = new Emitter();
+
+app.set("eventEmitter", eventEmitter);
 
 mongoose.connect("mongodb://localhost/coffee", {
   useNewUrlParser: true,
@@ -74,4 +77,23 @@ app.use(express.json());
 // require('./routes/web')(app)
 initRoute(app);
 
-app.listen(port, () => console.log("Server started with port " + port));
+const server = app.listen(port, () =>
+  console.log("Server started with port " + port)
+);
+
+//Socket io
+const io = require("socket.io")(server);
+
+io.on("connection", (socket) => {
+  socket.on("join", (roomName) => {
+    socket.join(roomName);
+  });
+});
+
+eventEmitter.on("orderUpdated", (data) => {
+  io.to(`order_${data.id}`).emit("orderUpdated", data);
+});
+
+eventEmitter.on("addOrder", (data) => {
+  io.to(`adminRoom`).emit("addOrder", data);
+});

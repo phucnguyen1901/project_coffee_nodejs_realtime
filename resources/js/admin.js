@@ -2,7 +2,7 @@
 // import { moment } from "moment";
 const axios = require("axios");
 const moment = require("moment");
-function initAdmin() {
+function initAdmin(socket) {
   const orderTableBody = document.querySelector("#orderTableBody");
   let orders = [];
   let markup;
@@ -79,6 +79,12 @@ function initAdmin() {
       })
       .join("");
   }
+
+  //add Order
+  socket.on("addOrder", (data) => {
+    orders.unshift(data);
+    orderTableBody.innerHTML = generateMarkup(orders);
+  });
 }
 
 module.exports = initAdmin;

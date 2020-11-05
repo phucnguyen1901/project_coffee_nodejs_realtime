@@ -416,7 +416,7 @@ section .status {
 }
 
 .status-line {
-  padding-bottom: 50px;
+  padding-bottom: 35px;
 }
 
 .status-line span {
@@ -433,7 +433,7 @@ section .status {
   top: 0;
   left: -11px;
   width: 2px;
-  height: 80%;
+  height: 65%;
   background: black;
   margin-top: 55px;
 }
