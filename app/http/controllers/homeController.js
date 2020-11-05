@@ -10,6 +10,10 @@ function homeController() {
       //     res.render('home', {coffee:coffee})
       // })
     },
+
+    contact(req, res) {
+      res.render("contact");
+    },
   };
 }
 

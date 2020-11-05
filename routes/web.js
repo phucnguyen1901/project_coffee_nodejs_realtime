@@ -11,6 +11,8 @@ const admin = require("../app/http/middleware/admin");
 function initRoute(app) {
   app.get("/", homeController().index);
 
+  app.get("/contact", homeController().contact);
+
   //login ,register and logout
   app.get("/login", guest, authController().login);
 
