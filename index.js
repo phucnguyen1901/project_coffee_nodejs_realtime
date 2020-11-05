@@ -18,7 +18,7 @@ const eventEmitter = new Emitter();
 
 app.set("eventEmitter", eventEmitter);
 
-mongoose.connect("mongodb://localhost/coffee", {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
