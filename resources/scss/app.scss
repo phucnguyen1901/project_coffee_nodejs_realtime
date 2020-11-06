@@ -125,13 +125,14 @@ section .status {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  transform: translateY(5px);
+  transform: translateY(9px);
 }
 
 .status-box ul li span::before {
-  content: "\f46c";
+  content: "";
   font-family: "Line Awesome Free";
   font-size: 46px;
+
   // font-weight: 600;
   // background-color: blue;
   // position: absolute;

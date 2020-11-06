@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 .noty_layout_mixin,
 #noty_layout__centerRight,
 #noty_layout__centerLeft,
@@ -406,11 +404,11 @@ section .status {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  transform: translateY(5px);
+  transform: translateY(9px);
 }
 
 .status-box ul li span::before {
-  content: "\F46C";
+  content: "";
   font-family: "Line Awesome Free";
   font-size: 46px;
 }
