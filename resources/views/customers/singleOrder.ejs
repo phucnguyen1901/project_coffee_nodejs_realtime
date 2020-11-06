@@ -2,13 +2,13 @@
   <div class="container mx-auto mt-3 status">
     <div class="w-2/3 mx-auto status-box">
       <div class="flex items-center justify-between pb-1">
-        <h1 class="text-3xl ">Status Order</h1>
-        <h6 class="text-green-600"><%= order._id%></h6>
+        <h1 class="lg:text-3xl text-xl">Status Order</h1>
+        <h6 class="text-green-600 lg:text-xl text-sm"><%= order._id%></h6>
         <input id="Order" type="hidden" value="<%= JSON.stringify(order) %>" />
       </div>
       <div>
         <ul>
-          <li class="status-line" data-status="order_placed">
+          <li class="status-line " data-status="order_placed">
             <span>Order_placed</span>
           </li>
           <li class="status-line" data-status="confirmed">

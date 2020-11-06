@@ -197,3 +197,28 @@ section .status {
   float: right;
   margin-top: 32px;
 }
+
+@media (max-width: 1060px) {
+  .container {
+    max-width: 90%;
+  }
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 550px) {
+  #logo {
+    width: 50px;
+    height: 50px;
+  }
+  li {
+    font-size: 14px;
+  }
+  #logo_cart {
+    width: 50px;
+    height: 30px;
+  }
+}

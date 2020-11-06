@@ -1,9 +1,9 @@
     <section class="hero">
         <div class="container mx-auto flex items-center justify-around">
             <div>
-                <h6 class="text-3xl text-center mb-3"><em> Have a nice day !</em></h6>
+                <h6 class="xl:text-3xl lg:text-2xl sm:text-xl text-center mb-3"><em> Have a nice day !</em></h6>
                 <a href="">
-                    <h1 id="text_order" class="px-5 text-6xl font-bold rounded-full">Order now!</h1>
+                    <h1 id="text_order" class="px-5 lg:text-6xl md:text-4xl sm:text-xl font-bold rounded-full">Order now!</h1>
                 </a>
             </div> 
             <div>
@@ -13,10 +13,10 @@
     </section>
     <section id="products" class="menu container mx-auto py-8">
             <h1 class="text-xl font-bold">All Coffee</h1>
-            <div class="grid grid-cols-4 col-gap-12 row-gap-16">
+            <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 col-gap-12 row-gap-16">
         <% menu.forEach(function (element){ %>
-                <div class="w-64 rounded-full">
-                    <img class="h-64 w-64" src="/image/<%= element.img %>" alt="coffee_phusi">
+                <div class="md:w-64 w-full rounded-full">
+                    <img class="h-64 md:w-64 w-full" src="/image/<%= element.img %>" alt="coffee_phusi">
                     <div class="text-center">
                         <h2 class="font-bold"><%= element.name%> </h2>
                         <h4>Size: <%=element.size%></h4>

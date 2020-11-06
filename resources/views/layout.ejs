@@ -13,10 +13,10 @@
       rel="stylesheet"
       href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
     /> -->
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css"
-    />
+    /> -->
 
     <link rel="stylesheet" href="/css/app.css" />
   </head>
@@ -32,7 +32,9 @@
         <div>
           <ul class="flex items-center">
             <% if(user && user.role==='admin') {%>
-            <li class="ml-6"><a href="/admin/orders">Orders</a></li>
+            <li class="xl:ml-6 md:ml-6 lg:ml-6 ml-2">
+              <a href="/admin/orders">Orders</a>
+            </li>
             <%}else{%>
             <li>
               <!-- <a id="logo_cart" href="/cart" class="py-1 px-2 flex items-center rounded-lg"> -->
@@ -51,20 +53,28 @@
                 />
               </a>
             </li>
-            <li class="ml-6"><a href="/#products">Menu</a></li>
-            <li class="ml-6"><a href="/contact">Contact</a></li>
+            <li class="xl:ml-6 md:ml-6 lg:ml-6 ml-2">
+              <a href="/#products">Menu</a>
+            </li>
+            <li class="xl:ml-6 md:ml-6 lg:ml-6 ml-2">
+              <a href="/contact">Contact</a>
+            </li>
             <%}%> <% if(user) { if(user.role==='customer'){%>
-            <li class="ml-6"><a href="/customer/orders">History</a></li>
+            <li class="xl:ml-6 md:ml-6 lg:ml-6 ml-2">
+              <a href="/customer/orders">History</a>
+            </li>
             <%}%>
             <form id="logout" action="/logout" method="POST">
-              <li class="ml-6">
+              <li class="xl:ml-6 md:ml-6 lg:ml-6 ml-2">
                 <a onclick="document.getElementById('logout').submit()" href="#"
                   >Logout</a
                 >
               </li>
             </form>
             <%}else{%>
-            <li class="ml-6"><a href="/login">Login</a></li>
+            <li class="xl:ml-6 md:ml-6 lg:ml-6 ml-2">
+              <a href="/login">Login</a>
+            </li>
             <% }%>
           </ul>
         </div>
