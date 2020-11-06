@@ -32,7 +32,7 @@
         <div>
           <ul class="flex items-center">
             <% if(user && user.role==='admin') {%>
-            <li class="xl:ml-6 md:ml-6 lg:ml-6 ml-2">
+            <li class="md:ml-6 ml-2">
               <a href="/admin/orders">Orders</a>
             </li>
             <%}else{%>
@@ -53,19 +53,19 @@
                 />
               </a>
             </li>
-            <li class="xl:ml-6 md:ml-6 lg:ml-6 ml-2">
+            <li class="md:ml-6 ml-2">
               <a href="/#products">Menu</a>
             </li>
-            <li class="xl:ml-6 md:ml-6 lg:ml-6 ml-2">
+            <li class="md:ml-6 ml-2">
               <a href="/contact">Contact</a>
             </li>
             <%}%> <% if(user) { if(user.role==='customer'){%>
-            <li class="xl:ml-6 md:ml-6 lg:ml-6 ml-2">
+            <li class="md:ml-6 ml-2">
               <a href="/customer/orders">History</a>
             </li>
             <%}%>
             <form id="logout" action="/logout" method="POST">
-              <li class="xl:ml-6 md:ml-6 lg:ml-6 ml-2">
+              <li class="md:ml-6 ml-2">
                 <a onclick="document.getElementById('logout').submit()" href="#"
                   >Logout</a
                 >
