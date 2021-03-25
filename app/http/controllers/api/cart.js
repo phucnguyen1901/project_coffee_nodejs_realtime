@@ -1,12 +1,13 @@
-function cartController() {
+
+
+function apiCart() {
   return {
     cart(req, res) {
       //   const m = req.session.cart.items;
       //   for (const el in req.session.cart.items) {
       //     console.log(m[el].item);
       //   }
-      res.render("customers/cart");
-      // res.json(req.session.cart);
+      res.json(req.session.cart);
     },
     updateCart(req, res) {
       if (!req.session.cart) {
@@ -34,10 +35,10 @@ function cartController() {
     //   for (const el in req.session.cart.items) {
     //     const coffee = req.session.cart.items[el].item;
     //   }
-      return res.json({ totalQty: cart.totalQty, totalPrice: cart.totalPrice });
-      // return res.json(req.session.cart);
+    //   return res.json({ totalQty: cart.totalQty, totalPrice: cart.totalPrice });
+      return res.json(req.session.cart);
     },
   };
 }
 
-module.exports = cartController;
+module.exports = apiCart;

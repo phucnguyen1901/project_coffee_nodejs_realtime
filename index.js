@@ -6,6 +6,7 @@ const ejs = require("ejs");
 const expressLayout = require("express-ejs-layouts");
 const path = require("path");
 const initRoute = require("./routes/web");
+const apiRoute = require("./routes/api");
 const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 const session = require("express-session");
@@ -76,8 +77,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // require('./routes/web')(app)
 initRoute(app);
+apiRoute(app);
 
-const server = app.listen(port, () =>
+const server = app.listen(80,'0.0.0.0', () =>
   console.log("Server started with port " + port)
 );
 
