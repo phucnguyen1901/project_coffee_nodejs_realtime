@@ -8,10 +8,8 @@ function authApi() {
 //     return req.user.role === "admin" ? "/admin/orders" : "/cart";
 //   };
   return {
-    login(req, res) {
-      res.render("auth/login");
-    },
-    postLogin(req, res, next) {
+
+     login(req, res, next) {
       const { username, password } = req.body;
       console.log(req.body);
       if (!username || !password) {
@@ -33,14 +31,14 @@ function authApi() {
             req.flash("error", info.message);
             return res.redirect("/");
           }
-          return res.json({"message":"Sign in success"})
+          return res.json({user})
         });
       })(req, res, next);
     },
     register(req, res) {
       res.render("auth/register");
     },
-    async postRegister(req, res) {
+    async register(req, res) {
       const { name, username, password } = req.body;
       console.log(req.body);
       if (!name || !username || !password) {

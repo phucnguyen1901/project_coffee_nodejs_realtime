@@ -3,11 +3,7 @@
 function apiCart() {
   return {
     cart(req, res) {
-      //   const m = req.session.cart.items;
-      //   for (const el in req.session.cart.items) {
-      //     console.log(m[el].item);
-      //   }
-      res.json(req.session.cart);
+      return res.json(req.session.cart);
     },
     updateCart(req, res) {
       if (!req.session.cart) {
@@ -24,11 +20,11 @@ function apiCart() {
           item: req.body,
           qty: 1,
         };
-        cart.totalQty += 1;
+        cart.totalQty +=  req.body.qty;
         cart.totalPrice += req.body.price;
       } else {
-        cart.items[req.body._id].qty += 1;
-        cart.totalQty += 1;
+        cart.items[req.body._id].qty +=  req.body.qty;
+        cart.totalQty += req.body.qty;
         cart.totalPrice += req.body.price;
       }
       //   console.log(req.session.cart);

@@ -14,6 +14,7 @@ const flash = require("express-flash");
 const MongoDbStore = require("connect-mongo")(session);
 const passport = require("passport");
 const Emitter = require("events");
+const cors = require("cors");
 
 const eventEmitter = new Emitter();
 
@@ -58,7 +59,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(flash());
-
+app.use(cors({credentials: true, origin: true}));
 //Global middleware
 app.use((req, res, next) => {
   res.locals.session = req.session;
