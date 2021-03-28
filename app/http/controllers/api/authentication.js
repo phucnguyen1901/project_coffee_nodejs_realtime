@@ -15,7 +15,7 @@ function authApi() {
       if (!username || !password) {
         req.flash("error", "All fields are required");
         req.flash("username", username);
-        return res.json({"message":"Sign in no success"});
+        return res.json(null);
       }
       passport.authenticate("local", (err, user, info) => {
         if (err) {
@@ -24,7 +24,7 @@ function authApi() {
         }
         if (!user) {
           req.flash("error", info.message);
-          return res.json({"message":"Sign in no success"})
+          return res.json(null)
         }
         req.logIn(user, (err) => {
           if (err) {
@@ -35,25 +35,17 @@ function authApi() {
         });
       })(req, res, next);
     },
-    register(req, res) {
-      res.render("auth/register");
-    },
+
     async register(req, res) {
       const { name, username, password } = req.body;
       console.log(req.body);
       if (!name || !username || !password) {
-        req.flash("error", "All fields are required");
-        req.flash("name", name);
-        req.flash("username", username);
-        return  res.json({"message": "Sign up no success"})
+        return  res.json(null)
       }
       //   Check exist
       User.exists({ username: username }, (err, data) => {
         if (data) {
-          req.flash("error", "Username is exist");
-          req.flash("name", name);
-          req.flash("username", username);
-          return  res.json({"message": "Sign up no success"})
+          return  res.json(null)
         }
       });
 
@@ -67,10 +59,9 @@ function authApi() {
       });
       user
         .save()
-        .then((user) => res.json({"message": "Sign up success"}))
+        .then((user) => res.json({"message": "Register successfully"}))
         .catch((req) => {
-          req.flash("error", "Something went wrong");
-          return res.json({"message": "Sign up no success"});
+          return res.json(null);
         });
         
     },
