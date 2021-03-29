@@ -7,16 +7,18 @@ function initAdmin(socket) {
   let orders = [];
   let markup;
   axios
-    .get("/admin/orders", {
-      headers: {
-        "X-Requested-With": "XMLHttpRequest",
-      },
-    })
+    .get("/admin/orders"
+    // , {
+    //   headers: {
+    //     "X-Requested-With": "XMLHttpRequest",
+    //   },
+    // }
+    )
     .then((res) => {
       orders = res.data;
       // if (typeof order === "object") {
-      markup = generateMarkup(orders);
-      orderTableBody.innerHTML = markup;
+      // markup = generateMarkup(orders);
+      // orderTableBody.innerHTML = markup;
       // }
     })
     .catch((err) => {
@@ -25,6 +27,7 @@ function initAdmin(socket) {
 
   function renderItems(object) {
     let parsedItems = Object.values(object);
+    // console.log("render"+parseItems)
     return parsedItems
       .map((menuItem) => {
         return `
@@ -41,7 +44,7 @@ function initAdmin(socket) {
         <td class="border px-4 py-2 text-blue-500 hover:text-pink-500">
           <a href=""> ${order._id}</a>
         </td>
-        <td class="border px-4 py-2"> ${renderItems(order.items)}</td>
+        <td class="border px-4 py-2"> ${renderItems(order.items.items)}</td>
         <td class="border px-4 py-2"> ${order.address}</td>
         <td class="border px-4 py-2">0${order.phone}</td>
         <td class="border px-4 py-2"> ${order.note}</td>
@@ -80,7 +83,7 @@ function initAdmin(socket) {
       .join("");
   }
 
-  //add Order
+  // add Order
   socket.on("addOrder", (data) => {
     orders.unshift(data);
     orderTableBody.innerHTML = generateMarkup(orders);
