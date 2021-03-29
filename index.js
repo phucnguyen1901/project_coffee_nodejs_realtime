@@ -80,7 +80,7 @@ app.use(express.json());
 initRoute(app);
 apiRoute(app);
 
-const server = app.listen(80,'0.0.0.0', () =>
+const server = app.listen(port, () =>
   console.log("Server started with port " + port)
 );
 
